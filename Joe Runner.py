@@ -10,7 +10,6 @@ pygame.init()
 SCREEN_HEIGHT = 550
 SCREEN_WIDTH = 1100
 SCREEN = pygame.display.set_mode((SCREEN_WIDTH, SCREEN_HEIGHT))
-
 RUNNING = [pygame.transform.scale2x(pygame.image.load(os.path.join("Assets/Joe", "Joe Run 1.png"))), pygame.transform.scale2x(pygame.image.load(os.path.join("Assets/Joe", "Joe Run 2.png"))), pygame.transform.scale2x(pygame.image.load(os.path.join("Assets/Joe", "Joe Run 3.png")))]
 JUMPING = [pygame.transform.scale2x(pygame.image.load(os.path.join("Assets/Joe", "Joe Jump 1.png"))),pygame.transform.scale2x(pygame.image.load(os.path.join("Assets/Joe", "Joe Jump 2.png"))), pygame.transform.scale2x(pygame.image.load(os.path.join("Assets/Joe", "Joe Jump 3.png")))]
 SLIDING = pygame.transform.scale2x(pygame.image.load(os.path.join("Assets/Joe", "Joe Slide.png")))
@@ -294,7 +293,8 @@ def main(genomes, config):
 
         for i, joe in enumerate(joes):
             ge[i].fitness += 0.01
-            output = nets[i].activate((joe.rect.y,
+            if not obstacle.passed or not objective.passed:
+                output = nets[i].activate((joe.rect.y,
                                        distance((joe.rect.x, joe.rect.y),
                                         obstacle.rect.midtop),distance((joe.rect.x, joe.rect.y),
                                         objective.rect.center),distance(objective.rect.center,obstacle.rect.midtop)))
