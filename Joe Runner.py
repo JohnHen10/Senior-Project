@@ -297,14 +297,15 @@ def main(genomes, config):
             output = nets[i].activate((joe.rect.y,
                                        distance((joe.rect.x, joe.rect.y),
                                         obstacle.rect.midtop),distance((joe.rect.x, joe.rect.y),
-                                        objective.rect.midtop),distance(objective.rect.midtop,obstacle.rect.midtop)))
+                                        objective.rect.center),distance(objective.rect.center,obstacle.rect.midtop)))
             if output[0] > 0.5 and joe.rect.y == joe.Y_POS:
                 joe.joe_jump = True
                 joe.joe_run = False
-                if objective.passed and obstacle.passed:
-                    ge[i].fitness -= 5
+                #if objective.passed and obstacle.passed:
+                  #  ge[i].fitness -= 5
                # if joe.rect.colliderect(objective.rect) == False and joe.rect.x > obstacle.rect.x:
                #     ge[i].fitness -= 1
+        
 
         statistics()
         score()
