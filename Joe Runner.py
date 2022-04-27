@@ -269,7 +269,7 @@ def main(genomes, config):
                     obstacle.passed = True
                     ge[i].fitness +=1
                 if joe.rect.colliderect(obstacle.rect):
-                    ge[i].fitness -= 5
+                    ge[i].fitness -= 10
                     remove(i)
                 
                 
