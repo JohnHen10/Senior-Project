@@ -280,8 +280,8 @@ def main(genomes, config):
                 if joe.rect.colliderect(objective.rect):
                     points = points + 100
                     ge[i].fitness += 3
-                    objectives.pop()
-                    objectives.append(Objective(OBJ))
+                    #objectives.pop()
+                    #objectives.append(Objective(OBJ))
                     #if joe.rect.colliderect(objective.rect) == False and joe.rect.x > obstacle.rect.x:
                     #     ge[i].fitness -= 1
                 if not objective.passed and objective.rect.x < joe.rect.x:
@@ -292,7 +292,7 @@ def main(genomes, config):
         user_input = pygame.key.get_pressed()
 
         for i, joe in enumerate(joes):
-            ge[i].fitness += 0.01
+           # ge[i].fitness += 0.01
             if not obstacle.passed or not objective.passed:
                 output = nets[i].activate((joe.rect.y,
                                        distance((joe.rect.x, joe.rect.y),
